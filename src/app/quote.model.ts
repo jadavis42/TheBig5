@@ -8,11 +8,26 @@ export class Quote {
     private low: number;
     private price: number;
     private volume: number;
-    private http: HttpClient;
+    private change: number;
+    private changePct: number;
 
-    constructor(ticker: string) {
-        let symbol = ticker;
+    private SYMBOL = "01. symbol";
+    private OPEN = "02. open";
+    private HIGH = "03. high";
+    private LOW = "04. low";
+    private PRICE = "05. price";
+    private VOLUME = "06. volume";
+    private CHANGE = "09. change";
+    private CHANGE_PCT = "10. change percent";
 
-        let response = this.http.get('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo');
+    constructor(jQuote: string) {
+        this.symbol = jQuote[this.SYMBOL];
+        this.open = jQuote[this.OPEN];
+        this.high = jQuote[this.HIGH];
+        this.low = jQuote[this.LOW];
+        this.price = jQuote[this.LOW];
+        this.volume = jQuote[this.VOLUME];
+        this.change = jQuote[this.CHANGE];
+        this.changePct = jQuote[this.CHANGE_PCT];
     }
 }

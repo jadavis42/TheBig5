@@ -1,7 +1,14 @@
-export class AlphaVService {
+import { HttpClient } from "@angular/common/http";
 
-    getQuote(symbol: String): String {
+export class AlphaVService {
+    private key = '';
+
+    async getQuote(symbol: string) {
         console.log('getting quote: ' + symbol);
-        return '98.75';
+
+        const response = await fetch('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=MSFT&apikey=demo');
+        const data = await response.json();
+        console.log(data);
+        return data["Global Quote"];
     }
 }
