@@ -1,11 +1,31 @@
     <div class="container-fluid mt-3">
-        <h2>The Big 5</h2>
-        <table class="table table-bordered mt-3">
+        <h2 style="color:gold">The Big 5</h2>
+        <p>Live quotes from your favorite tech stocks.  Updated 2x per minute.</p>
+        <table class="table table-bordered table-striped mt-3">
             <thead>
                 <tr>
                     <th>Symbol</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
                     <th>Price</th>
+                    <th>Volume</th>
+                    <th>Change</th>
+                    <th>% Change</th>
                 </tr>
             </thead>
+            <tbody>
+                <tr *ngFor="let q of getQuotes()">
+                    <td>{{q.symbol}}</td>
+                    <td>{{q.open}}</td>
+                    <td>{{q.high}}</td>
+                    <td>{{q.low}}</td>
+                    <td>{{q.price}}</td>
+                    <td>{{q.volume}}</td>                    
+                    <td class={{q.changeColor}}>{{q.change > 0 ? '+'+q.change : q.change}}</td>
+                    <td class={{q.changeColor}}>{{q.changePct}}</td>
+                </tr>
+            </tbody>
         </table>
+        <label class="mt-3"><i>Last Updated: {{now}}</i></label>
     </div>   

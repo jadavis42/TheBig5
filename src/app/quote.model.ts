@@ -10,6 +10,7 @@ export class Quote {
     private volume: number;
     private change: number;
     private changePct: number;
+    private changeColor: string;
 
     private SYMBOL = "01. symbol";
     private OPEN = "02. open";
@@ -28,6 +29,18 @@ export class Quote {
         this.price = jQuote[this.LOW];
         this.volume = jQuote[this.VOLUME];
         this.change = jQuote[this.CHANGE];
-        this.changePct = jQuote[this.CHANGE_PCT];
+
+        let changePct = jQuote[this.CHANGE_PCT];
+        //console.log(changePct.length);
+        console.log(changePct.substring(0, changePct.length - 1));
+        this.changePct = Number(changePct.substring(0, changePct.length - 1));
+        
+        if (this.changePct > 0.2) {
+            this.changeColor = 'text-success';
+        } else if (this.changePct < - 0.2) {
+            this.changeColor = 'text-danger';
+        } else {
+            this.changeColor = 'text-warning';
+        }
     }
 }
