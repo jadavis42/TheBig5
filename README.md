@@ -1,5 +1,7 @@
 # TheBig5
 
+Based on the AlphaVantage free API, this Angular application provide live stock quotes for 5 of the biggest tech stocks in the U.S.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Development server
